@@ -51,8 +51,21 @@ curl -sSL https://kuboard.cn/install-script/v1.18.x/init_master.sh | sh -s 1.18.
 ```
 
 #### node节点
-# 只在 master 节点执行
-kubeadm token create --print-join-command
+```shell
+# 只在 worker 节点执行
+# 替换 x.x.x.x 为 master 节点的内网 IP
+export MASTER_IP=172.17.20.104
+# 替换 apiserver.demo 为初始化 master 节点时所使用的 APISERVER_NAME
+export APISERVER_NAME=apiserver.demo
+echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
+
+# master 节点上 kubeadm token create --print-join-command 获取下面的内容
+kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
+
+
+```
+
+
 
 ### 参考资料
 + [《使用kubeadm安装kubernetes_v1.18.x》](https://kuboard.cn/install/install-k8s.html)
