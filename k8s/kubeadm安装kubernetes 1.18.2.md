@@ -9,33 +9,32 @@
   # 设置 hostname 解析
   echo "127.0.0.1   $(hostname)" >> /etc/hosts
   ```
-
-```
-
 + 校对时间
-```shell
-yum -y install ntp
-systemctl start ntpd
-systemctl enable ntpd
-```
+	```shell
+	yum -y install ntp
+	systemctl start ntpd
+	systemctl enable ntpd
+	```
+
 #### docker、kubeadm、kubelet、kubectl
 ```shell
 # 在 master 节点和 worker 节点都要执行
 # 最后一个参数 1.18.2 用于指定 kubenetes 版本，支持所有 1.18.x 版本的安装
-# 腾讯云 docker hub 镜像
-# export REGISTRY_MIRROR="https://mirror.ccs.tencentyun.com"
-# DaoCloud 镜像
-# export REGISTRY_MIRROR="http://f1361db2.m.daocloud.io"
-# 华为云镜像
-# export REGISTRY_MIRROR="https://05f073ad3c0010ea0f4bc00b7105ec20.mirror.swr.myhuaweicloud.com"
 # 阿里云 docker hub 镜像
 export REGISTRY_MIRROR=https://registry.cn-hangzhou.aliyuncs.com
 curl -sSL https://kuboard.cn/install-script/v1.18.x/install_kubelet.sh | sh -s 1.18.2
 ```
 
+可能出现的问题：
+```
+Failed to start docker.service: Unit not found.
+
+去路径/etc/systemd/system/docker.service.requires下面删除无关的服务，我之前安装过flanneld.service，删除既可以运行docker
+
+```
 
 #### mastr节点
-```
+```shell
 # 只在 master 节点执行
 # 替换 x.x.x.x 为 master 节点实际 IP（请使用内网 IP）
 # export 命令只在当前 shell 会话中有效，开启新的 shell 窗口后，如果要继续安装过程，请重新执行此处的 export 命令
@@ -50,7 +49,16 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 curl -sSL https://kuboard.cn/install-script/v1.18.x/init_master.sh | sh -s 1.18.2
 ```
 
++ 启动失败恢复
+
+  ```shell
+  kubeadm reset
+  rm -rf /var/lib/etcd/
+  rm -rf /root/.kube/*
+  ```
+
 #### node节点
+
 ```shell
 # 只在 worker 节点执行
 # 替换 x.x.x.x 为 master 节点的内网 IP
@@ -61,10 +69,7 @@ echo "${MASTER_IP}    ${APISERVER_NAME}" >> /etc/hosts
 
 # master 节点上 kubeadm token create --print-join-command 获取下面的内容
 kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery-token-ca-cert-hash sha256:6f7a8e40a810323672de5eee6f4d19aa2dbdb38411845a1bf5dd63485c43d303
-
-
 ```
-
 
 
 ### 参考资料
