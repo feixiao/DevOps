@@ -79,7 +79,23 @@ kubectl create namespace kube-ops
 
     # 查看pod状态
     kubectl get pods -n kube-ops
+    kubectl decribe pod  -f jenkins-85f6b6c6db-fb4z2 -n kube-ops
+    kubectl logs -f jenkins-85f6b6c6db-fb4z2 -n kube-ops
     ```
+### 访问Jenkins
++ 浏览器访问172.17.20.103:30002
++ 获取Jenkins initialAdminPassword
+```shell  
+kubectl logs -f jenkins-85f6b6c6db-fb4z2 -n kube-ops
+
+# 日志里面可以看到，类似下面
+Jenkins initial setup is required. An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+
+b30d0a099a4f4727838dc3ce4e2e27df
+
+This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
+```
 
 ### 参考资料
 + [《基于 Jenkins 的 CI/CD (一)》](https://www.qikqiak.com/k8s-book/docs/36.Jenkins%20Slave.html)
