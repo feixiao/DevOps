@@ -97,6 +97,9 @@ b30d0a099a4f4727838dc3ce4e2e27df
 This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 ```
 
+### Jenkins PipeLine & k8s
++ [《基于 Jenkins 的 CI/CD (二)》](https://www.qikqiak.com/k8s-book/docs/37.Jenkins%20Pipeline.html)
+
 ### 参考资料
 + [《基于 Jenkins 的 CI/CD (一)》](https://www.qikqiak.com/k8s-book/docs/36.Jenkins%20Slave.html)
 + [《Kubernetes下Jenkins CI的搭建》](https://hyrepo.com/tech/kubernetes-jenkins/)
