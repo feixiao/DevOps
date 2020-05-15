@@ -72,5 +72,19 @@ kubeadm join apiserver.demo:6443 --token mpfjma.4vjjg8flqihor4vt     --discovery
 ```
 
 
+### Dashboard
+```shell
+kubectl apply -f ./recommended.yaml
+kubectl proxy
+
+# 浏览器访问相关地址
+```
+##### 生成token
+```shell
+kubectl create -f ./account.yaml
+
+kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
+```
+
 ### 参考资料
 + [《使用kubeadm安装kubernetes_v1.18.x》](https://kuboard.cn/install/install-k8s.html)
