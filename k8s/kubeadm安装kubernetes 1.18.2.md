@@ -97,6 +97,8 @@ kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboar
 kubectl apply -f crd.yaml
 kubectl apply -f rbac.yaml 
 
+kubectl apply -f config.yaml -n kube-system
+
 # 我们指定分配到master节点
 kubectl apply -f deployment.yaml -n kube-system
 
@@ -104,6 +106,9 @@ kubectl apply -f dashboard.yaml -n kube-system
 
 # 查看
 kubectl get pods -n kube-system -l k8s-app=traefik -o wide
+
+# 浏览器访问
+http://traefik.mmc/dashboard/#/
 ```
 
 
