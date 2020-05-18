@@ -78,7 +78,12 @@ kubectl apply -f ./recommended.yaml
 kubectl proxy
 
 # 浏览器访问相关地址
+```shell
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/overview?namespace=default
+
+需要使用下面生成的token
 ```
+
 ##### 生成token
 ```shell
 kubectl create -f ./account.yaml
@@ -86,5 +91,24 @@ kubectl create -f ./account.yaml
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
 ```
 
+### 局域网k8s集群支持LoadBalancer服务
++ 安装Metalib
+```shell
+kubectl apply -f metallb.yaml 
+kubectl get pods -n metallb-system
+```
++ 创建ConfigMap.yaml
+```shell
+kubectl apply -f Configmap.yaml
+```
++ 测试loadbalancer
+```shell
+cd lb
+kubectl apply -f test_lb.yaml
+
+kubectl get services
+```
+
 ### 参考资料
 + [《使用kubeadm安装kubernetes_v1.18.x》](https://kuboard.cn/install/install-k8s.html)
++ [《为私有Kubernetes集群创建LoadBalancer服务》](https://blog.fleeto.us/post/intro-metallb/)
