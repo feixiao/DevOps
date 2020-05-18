@@ -91,10 +91,24 @@ kubectl create -f ./account.yaml
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
 ```
 
+### ingress安装
+```shell
+kubectl create -f rbac.yaml
+
+# 我们指定分配到master节点
+kubectl create -f traefik.yaml
+
+# 查看
+kubectl get pods -n kube-system -l k8s-app=traefik-ingress-lb -o wide
+```
+
+
 ### 局域网k8s集群支持LoadBalancer服务
 + 安装Metalib
 ```shell
 kubectl apply -f metallb.yaml 
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+
 kubectl get pods -n metallb-system
 ```
 + 创建ConfigMap.yaml
@@ -111,4 +125,4 @@ kubectl get services
 
 ### 参考资料
 + [《使用kubeadm安装kubernetes_v1.18.x》](https://kuboard.cn/install/install-k8s.html)
-+ [《为私有Kubernetes集群创建LoadBalancer服务》](https://blog.fleeto.us/post/intro-metallb/)
++ [《Kubernetes 私有集群负载均衡器终极解决方案》](https://www.modb.co/db/24870)
