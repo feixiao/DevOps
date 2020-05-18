@@ -93,13 +93,17 @@ kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboar
 
 ### ingress安装
 ```shell
-kubectl create -f rbac.yaml
+
+kubectl apply -f crd.yaml
+kubectl apply -f rbac.yaml 
 
 # 我们指定分配到master节点
-kubectl create -f traefik.yaml
+kubectl apply -f deployment.yaml -n kube-system
+
+kubectl apply -f dashboard.yaml -n kube-system
 
 # 查看
-kubectl get pods -n kube-system -l k8s-app=traefik-ingress-lb -o wide
+kubectl get pods -n kube-system -l k8s-app=traefik -o wide
 ```
 
 
@@ -126,3 +130,4 @@ kubectl get services
 ### 参考资料
 + [《使用kubeadm安装kubernetes_v1.18.x》](https://kuboard.cn/install/install-k8s.html)
 + [《Kubernetes 私有集群负载均衡器终极解决方案》](https://www.modb.co/db/24870)
++ [《Traefik 2》](http://www.mydlq.club/article/41/)
