@@ -92,6 +92,14 @@ kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboar
 ```
 
 ### ingress安装
+#### Ingress-nginx
+```shell
+kubectl apply -f ingress/nginx/deploy.yaml
+kubectl get pods -n ingress-nginx
+```
+
+
+#### Ingress-traefik 2
 ```shell
 
 kubectl apply -f crd.yaml
