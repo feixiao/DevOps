@@ -111,27 +111,6 @@ kubectl get pods -n kube-system -l k8s-app=traefik -o wide
 http://traefik.mmc/dashboard/#/
 ```
 
-
-### 局域网k8s集群支持LoadBalancer服务
-+ 安装Metalib
-```shell
-kubectl apply -f metallb.yaml 
-kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
-
-kubectl get pods -n metallb-system
-```
-+ 创建ConfigMap.yaml
-```shell
-kubectl apply -f Configmap.yaml
-```
-+ 测试loadbalancer
-```shell
-cd lb
-kubectl apply -f test_lb.yaml
-
-kubectl get services
-```
-
 ### 参考资料
 + [《使用kubeadm安装kubernetes_v1.18.x》](https://kuboard.cn/install/install-k8s.html)
 + [《Kubernetes 私有集群负载均衡器终极解决方案》](https://www.modb.co/db/24870)
