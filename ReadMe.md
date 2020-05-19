@@ -20,7 +20,7 @@
 #### app 
     k8s部署go app。
 
-### 参考资料
+### 指导手册
 + [《12-Factor》](https://12factor.net/zh_cn/) 12-Factor 为构建如下的 SaaS 应用提供了方法论。
 + [《生产环境容器落地最佳实践》](https://studygolang.com/articles/27140)
 
