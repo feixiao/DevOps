@@ -8,7 +8,7 @@ metadata:
 
 spec:
   rules:
-    - host: go-app.mmc
+    - host: whoami.mmc
       http:
         paths:
           - backend:
