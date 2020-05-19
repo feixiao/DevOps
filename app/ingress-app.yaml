@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: goapp-ingress
+  # annotations:
+  #   traefik.ingress.kubernetes.io/router.entrypoints: http
+spec:
+  rules:
+    - host: goapp.mmc
+      http:
+        paths:
+          - backend:
+              serviceName: goapp-service
+              servicePort: 8080

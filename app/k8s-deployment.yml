@@ -1,20 +1,33 @@
+apiVersion: v1
+kind: Service                    # Type of kubernetes resource
+metadata:
+  name: goapp-service      # Name of the resource
+spec:
+  type: ClusterIP
+  ports:                         # Take incoming HTTP requests on port 9090 and forward them to the targetPort of 8080
+    - name: http
+      port: 8080
+      protocol: TCP
+      # targetPort: http
+  selector:
+    app: go-app   # Map any pod with name go-app to this service
 ---
 apiVersion: apps/v1
 kind: Deployment                 # Type of Kubernetes resource
 metadata:
-  name: k8s-go-app           # Name of the Kubernetes resource
+  name: goapp-deploy           # Name of the Kubernetes resource
 spec:
-  replicas: 3                    # Number of pods to run at any given time
+  replicas: 1                    # Number of pods to run at any given time
   selector:
     matchLabels:
-      app: k8s-go-app        # This deployment applies to any Pods matching the specified label
+      app: go-app                # This deployment applies to any Pods matching the specified label
   template:                      # This deployment will create a set of pods using the configurations in this template
     metadata:
       labels:                    # The labels that will be applied to all of the pods in this deployment
-        app: k8s-go-app 
+        app: go-app 
     spec:                        # Spec for the container which will run in the Pod
       containers:
-      - name: k8s-go-app
+      - name: go-app
         image: docker-registry.dhc:5000/k8s-go-app:1.0.0
         imagePullPolicy: Always
         ports:
@@ -34,16 +47,3 @@ spec:
             scheme: HTTP
           initialDelaySeconds: 5
           timeoutSeconds: 1  
----
-apiVersion: v1
-kind: Service                    # Type of kubernetes resource
-metadata:
-  name: k8s-go-app-service   # Name of the resource
-spec:
-  type: NodePort                 # If you're deploying on cloud, you can use `type: LoadBalancer`. It will automatically provision a load balancer with the cloud provider that will route traffic to your application.
-  ports:                         # Take incoming HTTP requests on port 9090 and forward them to the targetPort of 8080
-  - name: http
-    port: 9090
-    targetPort: 8080
-  selector:
-    app: k8s-go-app          # Map any pod with name k8s-go-app to this service

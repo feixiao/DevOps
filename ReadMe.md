@@ -5,6 +5,9 @@
 +  CentOS 7+
 
 ### 目录介绍
+#### dns服务搭建
+    dns服务搭建。
+
 #### gitlab 
     基于docker部署gitlab, 方便管理go代码。
 
@@ -15,7 +18,7 @@
     基于k8s部署jenkins。
 
 #### app 
-    k8s部署go app.
+    k8s部署go app。
 
 
 
