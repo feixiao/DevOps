@@ -1,0 +1,16 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: whoami-ingress
+  # annotations:
+  #   traefik.ingress.kubernetes.io/router.entrypoints: http
+
+spec:
+  rules:
+    - host: go-app.mmc
+      http:
+        paths:
+          - backend:
+              serviceName: whoami-service
+              servicePort: 80
