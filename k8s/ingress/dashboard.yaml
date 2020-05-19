@@ -9,5 +9,5 @@ spec:
     - match: Host(`traefik.mmc`)
       kind: Rule
       services:
-        - name: traefik
+        - name: traefik-service
           port: 8080

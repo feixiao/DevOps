@@ -1,7 +1,8 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  namespace: kube-system
+#  namespace: kube-system
+  namespace: default
   name: traefik-ingress-controller
 ---
 kind: ClusterRole
@@ -42,4 +43,4 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: traefik-ingress-controller
-    namespace: kube-system
+    namespace: default

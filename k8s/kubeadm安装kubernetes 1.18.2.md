@@ -94,6 +94,7 @@ kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboar
 ### ingress安装
 #### Ingress-nginx
 ```shell
+# 我们指定分配到172.17.20.103
 kubectl apply -f ingress/nginx/deploy.yaml
 kubectl get pods -n ingress-nginx
 ```
@@ -103,17 +104,17 @@ kubectl get pods -n ingress-nginx
 ```shell
 
 kubectl apply -f crd.yaml
-kubectl apply -f rbac.yaml 
+kubectl apply -f rbac.yaml  #-n kube-system
 
-kubectl apply -f config.yaml -n kube-system
+kubectl apply -f config.yaml #-n kube-system
 
 # 我们指定分配到master节点
-kubectl apply -f deployment.yaml -n kube-system
+kubectl apply -f deployment.yaml #-n kube-system
 
-kubectl apply -f dashboard.yaml -n kube-system
+kubectl apply -f dashboard.yaml  #-n kube-system
 
 # 查看
-kubectl get pods -n kube-system -l k8s-app=traefik -o wide
+kubectl get pods  -l k8s-app=traefik -o wide  # -n kube-system
 
 # 浏览器访问
 http://traefik.mmc/dashboard/#/
