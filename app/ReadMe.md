@@ -1,4 +1,4 @@
-## K8S部署Go App
+## K8S部署 GoApp
 
 ### 编写Go App
 #### 配置(Config)
