@@ -1,6 +1,6 @@
-## K8S部署 GoApp
+## K8S部署GoApp
 
-### 编写Go App
+### 编写Go App
 #### 配置(Config)
     比较合适的配置管理是写入环境变量。
 #### 日志(Logging)
@@ -14,7 +14,7 @@
 #### 高可用(High Availability)
     水平扩展和节点维护。
 #### 服务探测(Probes)
-    开启Liveness和Readiness探测。
+    开启Liveness和Readiness探测。
 
 ### Docker化
 ```shell
