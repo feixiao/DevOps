@@ -103,3 +103,4 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 ### 参考资料
 + [《基于 Jenkins 的 CI/CD (一)》](https://www.qikqiak.com/k8s-book/docs/36.Jenkins%20Slave.html)
 + [《Kubernetes下Jenkins CI的搭建》](https://hyrepo.com/tech/kubernetes-jenkins/)
++ [《Jenkins pipeline脚本编写实践分享》](https://zhuanlan.zhihu.com/p/51533506)
