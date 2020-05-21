@@ -1,4 +1,4 @@
-## K8S部署Jenkins
+## K8S部署Jenkins
 
 ### NFS创建
 #### CentOS 7.6
@@ -73,7 +73,7 @@ kubectl create namespace kube-ops
 + Jenkins虽然已经起起来了，但是并不能通过浏览器访问，因为还没对外暴露，所以需要创建一个service(service.yml)
 + 我们这里通过 NodePort 的形式来暴露 Jenkins 的 web 服务，固定为30002端口，另外还需要暴露一个 agent 的端口，这个端口主要是用于 Jenkins 的 master 和 slave 之间通信使用的。
 + 详情查看[jenkins.yaml](./jenkins.yaml)
-+ 创建Jenkins服务
++ 创建Jenkins服务
     ```shell
     kubectl create -f service.yaml
 
@@ -100,11 +100,13 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 **注** Jenkins可以通过流水器生成器(Snippet Generator)协助生成代码，这个功能非常实用。
 
-### Jenkins PipeLine & k8s
+### Jenkins PipeLine & k8s
 + [《基于 Jenkins 的 CI/CD (二)》](https://www.qikqiak.com/k8s-book/docs/37.Jenkins%20Pipeline.html)
++ 安装k8s插件，支持docker in docker模式，配置go pipeline用得到。
 
 ### 参考资料
 + [《基于 Jenkins 的 CI/CD (一)》](https://www.qikqiak.com/k8s-book/docs/36.Jenkins%20Slave.html)
 + [《Kubernetes下Jenkins CI的搭建》](https://hyrepo.com/tech/kubernetes-jenkins/)
 + [《Jenkins pipeline脚本编写实践分享》](https://zhuanlan.zhihu.com/p/51533506)
 + [《pipeline-examples》](https://github.com/jenkinsci/pipeline-examples)
++ [《pipeline for go》](https://bmuschko.com/blog/go-on-jenkins/)
