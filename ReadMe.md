@@ -15,7 +15,8 @@
     部署k8s集群环境。
 
 #### jenkins
-    基于k8s部署jenkins。
+    1: 基于k8s部署jenkins。
+    2: 基于Jenkins构建go项目pipeline。
 
 #### app 
     k8s部署go app。

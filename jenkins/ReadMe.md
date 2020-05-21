@@ -102,7 +102,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 ### Jenkins PipeLine & k8s
 + [《基于 Jenkins 的 CI/CD (二)》](https://www.qikqiak.com/k8s-book/docs/37.Jenkins%20Pipeline.html)
-+ 安装k8s插件，支持docker in docker模式，配置go pipeline用得到。
++ 安装k8s插件，支持docker in docker模式，通过k8s动态调度Jenkins打包任务。
 
 ### 参考资料
 + [《基于 Jenkins 的 CI/CD (一)》](https://www.qikqiak.com/k8s-book/docs/36.Jenkins%20Slave.html)
@@ -110,3 +110,4 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 + [《Jenkins pipeline脚本编写实践分享》](https://zhuanlan.zhihu.com/p/51533506)
 + [《pipeline-examples》](https://github.com/jenkinsci/pipeline-examples)
 + [《pipeline for go》](https://bmuschko.com/blog/go-on-jenkins/)
++ [《jenkinsci/docker》](https://github.com/jenkinsci/docker)
