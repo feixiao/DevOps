@@ -97,6 +97,9 @@ b30d0a099a4f4727838dc3ce4e2e27df
 This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 ```
 
+
+**注** Jenkins可以通过流水器生成器(Snippet Generator)协助生成代码，这个功能非常实用。
+
 ### Jenkins PipeLine & k8s
 + [《基于 Jenkins 的 CI/CD (二)》](https://www.qikqiak.com/k8s-book/docs/37.Jenkins%20Pipeline.html)
 
@@ -104,3 +107,4 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 + [《基于 Jenkins 的 CI/CD (一)》](https://www.qikqiak.com/k8s-book/docs/36.Jenkins%20Slave.html)
 + [《Kubernetes下Jenkins CI的搭建》](https://hyrepo.com/tech/kubernetes-jenkins/)
 + [《Jenkins pipeline脚本编写实践分享》](https://zhuanlan.zhihu.com/p/51533506)
++ [《pipeline-examples》](https://github.com/jenkinsci/pipeline-examples)
