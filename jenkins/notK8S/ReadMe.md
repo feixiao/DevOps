@@ -28,3 +28,4 @@ http://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
 
 ### 参考资料
 + [《搭建DevOps模式的项目》](https://juejin.im/post/5e40cf84518825490f721bfe)
++ [《Create A CI/CD Pipeline With Kubernetes And Jenkins》](https://www.magalix.com/blog/create-a-ci/cd-pipeline-with-kubernetes-and-jenkins)
